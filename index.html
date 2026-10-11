@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Insure Guard — AI-Powered Cyber Insurance Risk Assessment Platform</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-cyber-dark text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-900">
+
+  <!-- Top Global Disclaimer Banner -->
+  <div class="disclaimer-banner">
+    <div class="banner-inner">
+      <span class="pulse-indicator"></span>
+      <span class="font-semibold text-cyan-400">PROTOTYPE DEMONSTRATION MODE:</span>
+      <span>Financial exposure figures, cyber risk scores, and insurance recommendations are simulated prototype results and not real insurance underwriting decisions.</span>
+    </div>
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="cyber-header">
+    <div class="header-container">
+      <div class="brand-group">
+        <div class="brand-logo">
+          <svg class="logo-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4" stroke="#00f2fe" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-title">
+            <span class="text-white font-bold">CYBER</span>
+            <span class="text-gradient-cyan">INSURE</span>
+            <span class="badge-guard">GUARD</span>
+          </div>
+          <div class="brand-subtitle">AI-Powered Cyber Insurance Risk Engine</div>
+        </div>
+      </div>
+
+      <!-- Quick Organization Preset Switcher -->
+      <div class="org-switcher">
+        <label for="company-preset" class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Demo Profile:</label>
+        <select id="company-preset" class="cyber-select-sm" aria-label="Demo Organization Preset">
+          <option value="apexFintech">Apex FinTech (Moderate Risk)</option>
+          <option value="mediHealth">MediHealth Systems (Critical Risk)</option>
+          <option value="cloudScale">CloudScale SaaS (Low Risk)</option>
+        </select>
+        <button id="btn-reset-demo" class="btn-ghost-sm" title="Reset to baseline data">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset
+        </button>
+      </div>
+
+      <!-- Header Right Badges & Actions -->
+      <div class="header-actions">
+        <div class="live-risk-pill" id="header-risk-pill">
+          <span class="risk-pill-dot" id="header-risk-dot"></span>
+          <span class="text-xs uppercase tracking-wider text-slate-400">Risk Score:</span>
+          <span class="risk-pill-value font-mono font-bold" id="header-risk-val">58</span>
+          <span class="risk-pill-tier" id="header-risk-tier">MODERATE</span>
+        </div>
+        <button id="btn-header-print" class="btn-cyan-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+          Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Stepper Navigation Bar (9 Phases) -->
+    <nav class="stepper-nav">
+      <div class="stepper-container">
+        <button class="step-btn active" data-step="1">
+          <span class="step-num">1</span>
+          <span class="step-label">Organization Profile</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="2">
+          <span class="step-num">2</span>
+          <span class="step-label">Questionnaire</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="3">
+          <span class="step-num">3</span>
+          <span class="step-label">AI Risk Engine</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="4">
+          <span class="step-num">4</span>
+          <span class="step-label">Risk Dashboard</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="5">
+          <span class="step-num">5</span>
+          <span class="step-label">Vulnerabilities</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="6">
+          <span class="step-num">6</span>
+          <span class="step-label">Financial Risk</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="7">
+          <span class="step-num">7</span>
+          <span class="step-label">Insurance Assessment</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="8">
+          <span class="step-num">8</span>
+          <span class="step-label">AI Recommendations</span>
+        </button>
+        <div class="step-divider"></div>
+        <button class="step-btn" data-step="9">
+          <span class="step-num">9</span>
+          <span class="step-label">Final Report</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Application Body -->
+  <main class="main-content">
+    
+    <!-- STEP 1: ORGANIZATION PROFILE -->
+    <section id="step-1" class="phase-section active">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 1 of 9 &bull; Underwriting Intake</span>
+          <h1 class="section-title">Organization Profile & Asset Inventory</h1>
+          <p class="section-desc">Define organizational scope, exposure profile, industry sector, and critical digital assets to calibrate risk models.</p>
+        </div>
+        <div class="section-actions">
+          <button id="btn-save-onboard" class="btn-cyan">
+            Proceed to Security Questionnaire &rarr;
+          </button>
+        </div>
+      </div>
+
+      <div class="card-grid-2">
+        <!-- Profile Form Card -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Corporate Information</h3>
+            <span class="badge-blue">Intake Parameters</span>
+          </div>
+          <div class="card-body form-grid">
+            <div class="form-group">
+              <label for="org-name" class="form-label">Company Legal Name</label>
+              <input type="text" id="org-name" class="cyber-input" value="Apex FinTech Solutions">
+            </div>
+
+            <div class="form-group">
+              <label for="org-industry" class="form-label">Industry Classification</label>
+              <select id="org-industry" class="cyber-select">
+                <option value="Fintech & Banking">Fintech & Banking (High Target)</option>
+                <option value="Healthcare & MedTech">Healthcare & MedTech (HIPAA/High Risk)</option>
+                <option value="SaaS & Cloud Services">SaaS & Cloud Services (Multi-tenant)</option>
+                <option value="E-Commerce & Retail">E-Commerce & Retail (PCI-DSS)</option>
+                <option value="Manufacturing & Supply Chain">Manufacturing & Supply Chain (OT/ICS)</option>
+                <option value="Critical Infrastructure & Energy">Critical Infrastructure & Energy</option>
+                <option value="Legal & Professional Services">Legal & Professional Services</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="org-size" class="form-label">Company Size</label>
+              <select id="org-size" class="cyber-select">
+                <option value="Startup (1-50)">Startup (1 - 50 headcount)</option>
+                <option value="Mid-Market (51-500)" selected>Mid-Market (51 - 500 headcount)</option>
+                <option value="Enterprise (501-5000)">Enterprise (501 - 5,000 headcount)</option>
+                <option value="Large Enterprise (5000+)">Large Enterprise (5,000+ headcount)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="org-employees" class="form-label">Employee Count</label>
+              <input type="number" id="org-employees" class="cyber-input" value="280">
+            </div>
+
+            <div class="form-group span-2">
+              <div class="label-with-val">
+                <label for="org-revenue" class="form-label">Annual Gross Revenue (USD)</label>
+                <span class="font-mono text-cyan-400 font-bold" id="revenue-display">$45,000,000</span>
+              </div>
+              <input type="range" id="org-revenue" class="cyber-slider" min="1000000" max="250000000" step="1000000" value="45000000">
+              <div class="slider-ticks">
+                <span>$1M</span>
+                <span>$50M</span>
+                <span>$100M</span>
+                <span>$175M</span>
+                <span>$250M+</span>
+              </div>
+            </div>
+
+            <div class="form-group span-2">
+              <label for="org-cloud" class="form-label">Cloud & Infrastructure Architecture</label>
+              <select id="org-cloud" class="cyber-select">
+                <option value="Multi-Cloud (AWS + Azure/GCP)" selected>Multi-Cloud (AWS + Azure/GCP)</option>
+                <option value="AWS (Amazon Web Services)">AWS (Amazon Web Services Dedicated)</option>
+                <option value="Microsoft Azure">Microsoft Azure Enterprise</option>
+                <option value="Google Cloud Platform (GCP)">Google Cloud Platform (GCP)</option>
+                <option value="Hybrid Cloud (On-Premises + Cloud)">Hybrid Cloud (On-Premises + Colocation + Cloud)</option>
+                <option value="Primarily On-Premises">Primarily On-Premises Legacy Datacenters</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Critical Assets & Contacts Card -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Critical Digital Assets & Compliance</h3>
+            <span class="badge-cyan">Crown Jewels</span>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <label class="form-label">Critical Crown-Jewel Assets Exposed</label>
+              <div class="checkbox-list" id="critical-assets-list">
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="Customer PII & Payment Card Vault" checked>
+                  <span class="checkmark"></span>
+                  <span>Customer PII & Payment Card Vault (PCI-DSS Scoped)</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="High-Frequency Transaction API Gateway" checked>
+                  <span class="checkmark"></span>
+                  <span>High-Frequency Transaction API Gateway & Ingress</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="PostgreSQL Core Financial Ledger" checked>
+                  <span class="checkmark"></span>
+                  <span>PostgreSQL Core Financial Ledger Database</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="Executive Email & Active Directory" checked>
+                  <span class="checkmark"></span>
+                  <span>Executive Email & Microsoft Entra / Active Directory</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="Proprietary Source Code Repositories">
+                  <span class="checkmark"></span>
+                  <span>Proprietary Source Code & Model Weights</span>
+                </label>
+                <label class="custom-checkbox">
+                  <input type="checkbox" value="Industrial IoT / Operational Technology">
+                  <span class="checkmark"></span>
+                  <span>Industrial IoT / SCADA / Operational Technology</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group mt-4">
+              <label class="form-label">Compliance Frameworks Under Current Scope</label>
+              <div class="compliance-tags" id="compliance-tags-container">
+                <span class="tag-pill active">SOC 2 Type II</span>
+                <span class="tag-pill active">PCI-DSS v4.0</span>
+                <span class="tag-pill active">GDPR / Privacy</span>
+                <span class="tag-pill">ISO 27001</span>
+                <span class="tag-pill">HIPAA Omnibus</span>
+                <span class="tag-pill">NIST CSF 2.0</span>
+              </div>
+            </div>
+
+            <div class="contact-box mt-4">
+              <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Underwriting Contact & Attestation</div>
+              <div class="form-grid">
+                <div>
+                  <label class="text-xs text-slate-400">Security Officer Name</label>
+                  <input type="text" id="contact-name" class="cyber-input-sm" value="Elena Rostova">
+                </div>
+                <div>
+                  <label class="text-xs text-slate-400">Email Address</label>
+                  <input type="email" id="contact-email" class="cyber-input-sm" value="e.rostova@apexfintech.io">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: CYBERSECURITY QUESTIONNAIRE -->
+    <section id="step-2" class="phase-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 2 of 9 &bull; Control Attestation</span>
+          <h1 class="section-title">Cybersecurity Assessment Questionnaire</h1>
+          <p class="section-desc">Underwriting questionnaire evaluating 7 defense-in-depth domains with real-time posture feedback.</p>
+        </div>
+        <div class="section-actions">
+          <button id="btn-run-ai-scan" class="btn-cyan">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            Trigger AI Risk Engine &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Domain Navigation Tabs -->
+      <div class="domain-tabs-bar">
+        <button class="domain-tab active" data-domain="all">All 7 Domains</button>
+        <button class="domain-tab" data-domain="network">Network Security</button>
+        <button class="domain-tab" data-domain="endpoint">Endpoint Security</button>
+        <button class="domain-tab" data-domain="iam">IAM & MFA</button>
+        <button class="domain-tab" data-domain="data">Data Security</button>
+        <button class="domain-tab" data-domain="appsec">AppSec</button>
+        <button class="domain-tab" data-domain="incident">Incident & Backups</button>
+        <button class="domain-tab" data-domain="employee">Employee Security</button>
+      </div>
+
+      <!-- Questions List Container (rendered dynamically) -->
+      <div id="questions-container" class="questions-stack">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- STEP 3: AI RISK ENGINE SCAN SIMULATION -->
+    <section id="step-3" class="phase-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 3 of 9 &bull; Neural Inference</span>
+          <h1 class="section-title">AI Cyber Risk Engine Execution</h1>
+          <p class="section-desc">Synthesizing questionnaire responses, vulnerability telemetry, threat feeds, and actuarial loss algorithms.</p>
+        </div>
+      </div>
+
+      <div class="ai-engine-container">
+        <!-- Scanning Radar & Neural Visualizer -->
+        <div class="radar-visualizer-card">
+          <div class="radar-circle-wrap">
+            <div class="radar-beam"></div>
+            <div class="radar-rings">
+              <div class="ring ring-1"></div>
+              <div class="ring ring-2"></div>
+              <div class="ring ring-3"></div>
+            </div>
+            <div class="radar-center-core">
+              <div class="core-dot"></div>
+              <span class="font-mono text-xs text-cyan-400 tracking-wider">AI EVAL</span>
+            </div>
+          </div>
+
+          <div class="scan-status-text">
+            <h3 id="scan-headline" class="text-xl font-bold text-white mb-1">Synthesizing Security Posture...</h3>
+            <p id="scan-subtext" class="text-sm text-slate-400">Correlating MITRE ATT&CK vectors and CVE exposure database</p>
+          </div>
+
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="scan-progress-bar" style="width: 25%;"></div>
+          </div>
+          <div class="flex-between text-xs font-mono text-slate-400 mt-1">
+            <span>Model: CyberGuard Neural-v4.2</span>
+            <span id="scan-percent">25%</span>
+          </div>
+        </div>
+
+        <!-- Terminal Output Stream -->
+        <div class="terminal-card">
+          <div class="terminal-header">
+            <div class="term-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="term-title">ai-underwriting-engine ~ telemetry stream</span>
+            <span class="badge-pulse">LIVE</span>
+          </div>
+          <div class="terminal-body" id="scan-terminal">
+            <div class="term-line info">[INIT] Loading organization parameters for Apex FinTech Solutions...</div>
+            <div class="term-line info">[DATA] Ingesting 7 security control domain responses...</div>
+            <div class="term-line success">[OK] Multi-Cloud perimeter topology verified (AWS + Azure).</div>
+            <div class="term-line warn">[WARN] Active CVSS 10.0 detected on bastion-eu-west.infra.internal</div>
+            <div class="term-line warn">[WARN] Non-phishing resistant MFA detected on legacy mail endpoints.</div>
+            <div class="term-line info">[ATT&CK] Mapping initial access vectors: T1190, T1556, T1486...</div>
+            <div class="term-line info">[ACTUARIAL] Calculating breach probability distribution...</div>
+          </div>
+          <div class="terminal-footer">
+            <button id="btn-skip-scan" class="btn-cyan-outline btn-sm">Skip Animation & View Risk Dashboard &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: RISK DASHBOARD -->
+    <section id="step-4" class="phase-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 4 of 9 &bull; Risk Intelligence</span>
+          <h1 class="section-title">Cyber Risk Dashboard & Security Posture</h1>
+          <p class="section-desc">Holistic quantitative risk score, tier classification, 7-domain radar evaluation, and key risk factors.</p>
+        </div>
+        <div class="section-actions">
+          <button class="btn-cyan nav-to-step" data-target="5">
+            Examine Vulnerabilities &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Top Metric Cards Grid -->
+      <div class="metric-cards-grid">
+        <!-- Main Risk Gauge Card -->
+        <div class="cyber-card gauge-card">
+          <div class="card-header">
+            <h3 class="card-title">Cyber Risk Score</h3>
+            <span class="badge-status-risk" id="dashboard-risk-badge">HIGH RISK</span>
+          </div>
+          <div class="gauge-content">
+            <!-- Circular SVG Risk Meter -->
+            <div class="svg-gauge-container">
+              <svg class="circular-chart" viewBox="0 0 36 36">
+                <path class="circle-bg"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+                <path class="circle" id="risk-gauge-circle"
+                  stroke-dasharray="58, 100"
+                  d="M18 2.0845
+                    a 15.9155 15.9155 0 0 1 0 31.831
+                    a 15.9155 15.9155 0 0 1 0 -31.831"
+                />
+              </svg>
+              <div class="gauge-center-text">
+                <span class="gauge-score-value font-mono font-bold" id="gauge-score-num">58</span>
+                <span class="gauge-score-denom">/ 100</span>
+                <span class="gauge-score-sub" id="gauge-score-tier">Moderate Risk</span>
+              </div>
+            </div>
+
+            <div class="gauge-legend">
+              <div class="legend-row">
+                <span class="legend-dot bg-emerald-500"></span>
+                <span class="text-xs text-slate-300">Low (0-24)</span>
+                <span class="text-xs text-slate-500">Preferred Class</span>
+              </div>
+              <div class="legend-row">
+                <span class="legend-dot bg-yellow-500"></span>
+                <span class="text-xs text-slate-300">Medium (25-49)</span>
+                <span class="text-xs text-slate-500">Standard Underwriting</span>
+              </div>
+              <div class="legend-row">
+                <span class="legend-dot bg-amber-500"></span>
+                <span class="text-xs text-slate-300">High (50-74)</span>
+                <span class="text-xs text-slate-500">Subject to Warranties</span>
+              </div>
+              <div class="legend-row">
+                <span class="legend-dot bg-rose-500"></span>
+                <span class="text-xs text-slate-300">Critical (75-100)</span>
+                <span class="text-xs text-slate-500">Declined / Exclusion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Security Defensive Posture Card -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Defensive Security Posture</h3>
+            <span class="badge-cyan">Defensive Index</span>
+          </div>
+          <div class="card-body">
+            <div class="flex-between items-baseline mb-2">
+              <span class="text-3xl font-mono font-bold text-white" id="defensive-score-num">42%</span>
+              <span class="text-xs text-slate-400">Calculated Security Maturity</span>
+            </div>
+            <p class="text-xs text-slate-400 mb-4">Inverse of residual risk exposure. Higher score reflects hardened defense-in-depth controls across cloud infrastructure.</p>
+            
+            <div class="posture-breakdown-list">
+              <div class="posture-row">
+                <span class="text-xs text-slate-300">Inherent Threat Risk</span>
+                <div class="posture-bar"><div class="fill bg-rose-500" style="width: 78%;"></div></div>
+                <span class="text-xs font-mono text-rose-400 font-bold">78/100</span>
+              </div>
+              <div class="posture-row">
+                <span class="text-xs text-slate-300">Compensating Controls</span>
+                <div class="posture-bar"><div class="fill bg-cyan-500" style="width: 52%;"></div></div>
+                <span class="text-xs font-mono text-cyan-400 font-bold">52/100</span>
+              </div>
+              <div class="posture-row">
+                <span class="text-xs text-slate-300">Vulnerability Density</span>
+                <div class="posture-bar"><div class="fill bg-amber-500" style="width: 65%;"></div></div>
+                <span class="text-xs font-mono text-amber-400 font-bold">65/100</span>
+              </div>
+              <div class="posture-row">
+                <span class="text-xs text-slate-300">Actuarial Confidence</span>
+                <div class="posture-bar"><div class="fill bg-emerald-500" style="width: 94%;"></div></div>
+                <span class="text-xs font-mono text-emerald-400 font-bold">94%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Insurance Impact Snapshot -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Underwriting Impact</h3>
+            <span class="badge-blue">Actuarial Status</span>
+          </div>
+          <div class="card-body">
+            <div class="underwriting-highlight-box mb-3" id="dash-underwrite-box">
+              <div class="text-xs uppercase text-slate-400">Projected Underwriting Status:</div>
+              <div class="text-lg font-bold text-amber-400" id="dash-underwrite-status">Conditional Approval Required</div>
+            </div>
+            <div class="stat-pair">
+              <span class="text-xs text-slate-400">Base Premium Adjustment:</span>
+              <span class="text-sm font-mono text-amber-400 font-bold" id="dash-rate-multiplier">+60% Load</span>
+            </div>
+            <div class="stat-pair">
+              <span class="text-xs text-slate-400">Total Breach Exposure:</span>
+              <span class="text-sm font-mono text-rose-400 font-bold" id="dash-total-exposure">$8,450,000</span>
+            </div>
+            <div class="stat-pair">
+              <span class="text-xs text-slate-400">Active High/Crit CVEs:</span>
+              <span class="text-sm font-mono text-white font-bold" id="dash-crit-cve-count">4 Findings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Domain Radar Chart & Category Scores -->
+      <div class="card-grid-2 mt-6">
+        <!-- 7-Axis Domain Radar Chart -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Domain Security Radar</h3>
+            <span class="badge-cyan">Multi-Vector Analysis</span>
+          </div>
+          <div class="card-body flex-center" style="min-height: 340px;">
+            <div id="radar-chart-container" class="radar-svg-container">
+              <!-- Rendered by JS SVG generator -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Scores Detail Table -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Category Posture Breakdown</h3>
+            <span class="badge-blue">7 Domains</span>
+          </div>
+          <div class="card-body p-0">
+            <div class="table-responsive">
+              <table class="cyber-table">
+                <thead>
+                  <tr>
+                    <th>Domain</th>
+                    <th>Score</th>
+                    <th>Risk</th>
+                    <th>Key Finding</th>
+                  </tr>
+                </thead>
+                <tbody id="category-table-body">
+                  <!-- Rendered by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Risk Factors Cards -->
+      <div class="mt-6">
+        <h3 class="text-lg font-bold text-white mb-3 flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Top AI-Identified Underwriting Risk Factors
+        </h3>
+        <div class="risk-factors-grid" id="risk-factors-container">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 5: VULNERABILITY DASHBOARD -->
+    <section id="step-5" class="phase-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 5 of 9 &bull; Threat Surface</span>
+          <h1 class="section-title">Vulnerability Assessment & Attack Surface</h1>
+          <p class="section-desc">Identified CVEs and infrastructure weaknesses. Remediating findings dynamically updates your risk score and insurance premium.</p>
+        </div>
+        <div class="section-actions">
+          <button class="btn-cyan nav-to-step" data-target="6">
+            Review Financial Exposure &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters & Search Toolbar -->
+      <div class="cyber-toolbar">
+        <div class="search-input-wrap">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="vuln-search-input" class="cyber-search-input" placeholder="Search by CVE, asset, or title...">
+        </div>
+
+        <div class="filter-btn-group">
+          <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold mr-2">Severity:</span>
+          <button class="filter-chip active" data-filter-severity="all">All</button>
+          <button class="filter-chip chip-critical" data-filter-severity="Critical">Critical</button>
+          <button class="filter-chip chip-high" data-filter-severity="High">High</button>
+          <button class="filter-chip chip-medium" data-filter-severity="Medium">Medium</button>
+        </div>
+
+        <div class="filter-btn-group ml-auto">
+          <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold mr-2">Status:</span>
+          <select id="vuln-status-filter" class="cyber-select-sm">
+            <option value="all">All Statuses</option>
+            <option value="Active">Active Only</option>
+            <option value="In Remediation">In Remediation</option>
+            <option value="Remediated">Remediated Only</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Vulnerabilities Table Card -->
+      <div class="cyber-card mt-4">
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="cyber-table">
+              <thead>
+                <tr>
+                  <th>Vulnerability & CVE</th>
+                  <th>Affected Asset</th>
+                  <th>CVSS & Severity</th>
+                  <th>Status</th>
+                  <th>Remediation Action</th>
+                  <th class="text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="vuln-table-body">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 6: FINANCIAL RISK CALCULATOR -->
+    <section id="step-6" class="phase-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 6 of 9 &bull; Loss Quantification</span>
+          <h1 class="section-title">Financial Cyber Loss Exposure Calculator</h1>
+          <p class="section-desc">Interactive actuarial simulation estimating total loss exposure, business interruption, and ransomware extortion.</p>
+        </div>
+        <div class="section-actions">
+          <button class="btn-cyan nav-to-step" data-target="7">
+            View Insurance Assessment &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Scenario Selector Tabs -->
+      <div class="scenario-selector-bar">
+        <span class="text-xs text-slate-400 uppercase tracking-wider font-semibold">Loss Scenario Model:</span>
+        <div class="scenario-pills">
+          <button class="scenario-btn" data-scenario="Optimistic">
+            <span class="font-bold">Optimistic</span>
+            <span class="scenario-sub">Fast containment, 0.6x cost</span>
+          </button>
+          <button class="scenario-btn active" data-scenario="Baseline">
+            <span class="font-bold">Baseline Projected</span>
+            <span class="scenario-sub">Expected loss distribution</span>
+          </button>
+          <button class="scenario-btn" data-scenario="Pessimistic">
+            <span class="font-bold">Pessimistic Catastrophe</span>
+            <span class="scenario-sub">Extended stoppage, 1.7x cost</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="financial-layout-grid mt-4">
+        <!-- Interactive Controls Column -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Loss Parameters & Sliders</h3>
+            <span class="badge-cyan">Dynamic Model</span>
+          </div>
+          <div class="card-body">
+            <!-- Records Exposed Slider -->
+            <div class="form-group mb-5">
+              <div class="flex-between">
+                <label for="slider-records" class="form-label">Data Records Potentially Compromised</label>
+                <span class="font-mono text-cyan-400 font-bold" id="val-records">250,000 Records</span>
+              </div>
+              <input type="range" id="slider-records" class="cyber-slider" min="5000" max="2000000" step="5000" value="250000">
+              <div class="slider-ticks">
+                <span>5K</span>
+                <span>500K</span>
+                <span>1M</span>
+                <span>2M</span>
+              </div>
+            </div>
+
+            <!-- Cost Per Record Slider -->
+            <div class="form-group mb-5">
+              <div class="flex-between">
+                <label for="slider-cost-record" class="form-label">Cost Per Record (IBM Ponemon Benchmark)</label>
+                <span class="font-mono text-cyan-400 font-bold" id="val-cost-record">$175 / record</span>
+              </div>
+              <input type="range" id="slider-cost-record" class="cyber-slider" min="80" max="400" step="5" value="175">
+              <div class="slider-ticks">
+                <span>$80</span>
+                <span>$175</span>
+                <span>$280</span>
+                <span>$400</span>
+              </div>
+            </div>
+
+            <!-- Downtime Hours -->
+            <div class="form-group mb-5">
+              <div class="flex-between">
+                <label for="slider-downtime" class="form-label">Expected Business Downtime</label>
+                <span class="font-mono text-amber-400 font-bold" id="val-downtime">48 Hours (2 Days)</span>
+              </div>
+              <input type="range" id="slider-downtime" class="cyber-slider" min="4" max="336" step="4" value="48">
+              <div class="slider-ticks">
+                <span>4h</span>
+                <span>48h (2d)</span>
+                <span>168h (1wk)</span>
+                <span>336h (2wk)</span>
+              </div>
+            </div>
+
+            <!-- Downtime Cost Per Hour -->
+            <div class="form-group mb-5">
+              <div class="flex-between">
+                <label for="slider-downtime-cost" class="form-label">Downtime Loss Per Hour</label>
+                <span class="font-mono text-amber-400 font-bold" id="val-downtime-cost">$45,000 / hr</span>
+              </div>
+              <input type="range" id="slider-downtime-cost" class="cyber-slider" min="5000" max="150000" step="5000" value="45000">
+            </div>
+
+            <!-- Forensic & Regulatory Input Grid -->
+            <div class="form-grid mb-3">
+              <div class="form-group">
+                <label class="form-label text-xs">Forensic Recovery Retainer</label>
+                <input type="number" id="input-recovery" class="cyber-input" value="350000">
+              </div>
+              <div class="form-group">
+                <label class="form-label text-xs">Regulatory Fines & Legal Defense</label>
+                <input type="number" id="input-fines" class="cyber-input" value="850000">
+              </div>
+            </div>
+
+            <!-- Ransomware Extortion -->
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label text-xs">Ransomware Extortion Demand</label>
+                <input type="number" id="input-ransom" class="cyber-input" value="1200000">
+              </div>
+              <div class="form-group">
+                <label class="form-label text-xs">Extortion Likelihood (Probability)</label>
+                <select id="select-ransom-prob" class="cyber-select">
+                  <option value="0.2">Low Likelihood (20%)</option>
+                  <option value="0.5" selected>Moderate Likelihood (50%)</option>
+                  <option value="0.85">High Likelihood (85%)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Exposure Results Card -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Total Estimated Exposure Breakdown</h3>
+            <span class="badge-status-risk font-mono font-bold" id="badge-total-exposure">$8,450,000</span>
+          </div>
+          <div class="card-body">
+            <!-- Visual Stacked Bar Chart -->
+            <div class="mb-4">
+              <div class="text-xs uppercase tracking-wider text-slate-400 mb-2 font-semibold">Exposure Component Composition:</div>
+              <div class="stacked-bar-container" id="stacked-loss-bar">
+                <div class="stack-seg seg-breach" title="Breach & Records Cost" style="width: 45%;"></div>
+                <div class="stack-seg seg-downtime" title="Business Interruption" style="width: 25%;"></div>
+                <div class="stack-seg seg-recovery" title="Forensics & Recovery" style="width: 8%;"></div>
+                <div class="stack-seg seg-fines" title="Regulatory & Legal" style="width: 12%;"></div>
+                <div class="stack-seg seg-ransom" title="Expected Ransomware Extortion" style="width: 10%;"></div>
+              </div>
+              <div class="stacked-legend mt-2">
+                <span class="leg-item"><span class="leg-box bg-cyan-400"></span> Breach Cost</span>
+                <span class="leg-item"><span class="leg-box bg-amber-400"></span> Downtime</span>
+                <span class="leg-item"><span class="leg-box bg-indigo-400"></span> Recovery</span>
+                <span class="leg-item"><span class="leg-box bg-purple-400"></span> Fines/Legal</span>
+                <span class="leg-item"><span class="leg-box bg-rose-400"></span> Ransomware</span>
+              </div>
+            </div>
+
+            <!-- Line Item Breakdown Cards -->
+            <div class="exposure-list">
+              <div class="exposure-item">
+                <div class="item-left">
+                  <div class="item-title text-cyan-300">Data Breach Notification & Forensics</div>
+                  <div class="item-desc">Notification costs, customer call centers, credit monitoring, forensic investigation</div>
+                </div>
+                <div class="item-amount font-mono" id="disp-breach-cost">$4,250,000</div>
+              </div>
+
+              <div class="exposure-item">
+                <div class="item-left">
+                  <div class="item-title text-amber-300">Business Interruption & Downtime</div>
+                  <div class="item-desc">Direct revenue loss during 48-hour operational paralysis</div>
+                </div>
+                <div class="item-amount font-mono" id="disp-downtime-cost">$2,160,000</div>
+              </div>
+
+              <div class="exposure-item">
+                <div class="item-left">
+                  <div class="item-title text-indigo-300">Forensics, Rebuilding & System Recovery</div>
+                  <div class="item-desc">Restoring from backups, re-imaging endpoints, third-party incident response firm</div>
+                </div>
+                <div class="item-amount font-mono" id="disp-recovery-cost">$350,000</div>
+              </div>
+
+              <div class="exposure-item">
+                <div class="item-left">
+                  <div class="item-title text-purple-300">Regulatory Fines & Legal Defense</div>
+                  <div class="item-desc">GDPR, PCI-DSS non-compliance penalties, litigation, outside counsel fees</div>
+                </div>
+                <div class="item-amount font-mono" id="disp-fines-cost">$1,147,500</div>
+              </div>
+
+              <div class="exposure-item">
+                <div class="item-left">
+                  <div class="item-title text-rose-300">Expected Ransomware Extortion Risk</div>
+                  <div class="item-desc">Probability-weighted threat actor ransom demand</div>
+                </div>
+                <div class="item-amount font-mono" id="disp-ransom-cost">$542,500</div>
+              </div>
+            </div>
+
+            <!-- Savings Banner -->
+            <div class="savings-card mt-4">
+              <div class="flex items-center gap-3">
+                <div class="savings-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div>
+                  <div class="text-xs uppercase text-emerald-400 font-bold">Risk Reduction Opportunity:</div>
+                  <div class="text-sm text-slate-200">Remediating active critical vulnerabilities reduces estimated exposure by up to <strong class="text-emerald-300 font-mono" id="disp-potential-savings">$3,800,000</strong>.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 7: INSURANCE ASSESSMENT -->
+    <section id="step-7" class="phase-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 7 of 9 &bull; Underwriting Evaluation</span>
+          <h1 class="section-title">Insurance Assessment & Coverage Tiers</h1>
+          <p class="section-desc">Simulated cyber insurance terms, policy tiers, estimated premium ranges, and underwriting prerequisites.</p>
+        </div>
+        <div class="section-actions">
+          <button class="btn-cyan nav-to-step" data-target="8">
+            View AI Recommendations &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Underwriting Decision Alert Banner -->
+      <div class="underwriting-banner" id="underwriting-verdict-banner">
+        <div class="verdict-icon" id="verdict-icon-container">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="verdict-details">
+          <div class="flex items-center gap-2">
+            <span class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Underwriting Decision:</span>
+            <span class="verdict-badge" id="verdict-decision-badge">Conditional Approval</span>
+          </div>
+          <div class="verdict-rationale text-sm text-slate-300 mt-1" id="verdict-rationale-text">
+            Coverage conditional upon remediation of high-priority perimeter findings within 30-day warranty period.
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Coverage Tier Cards -->
+      <div class="tier-cards-grid mt-6" id="coverage-tiers-container">
+        <!-- Rendered dynamically by JS -->
+      </div>
+
+      <!-- Policy Customizer & Prerequisites -->
+      <div class="card-grid-2 mt-6">
+        <!-- Interactive Policy Configurator -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Interactive Policy Customizer</h3>
+            <span class="badge-cyan">Tune Limit & Retention</span>
+          </div>
+          <div class="card-body">
+            <div class="form-group mb-5">
+              <div class="flex-between">
+                <label for="custom-policy-limit" class="form-label">Aggregate Policy Limit</label>
+                <span class="font-mono text-cyan-400 font-bold" id="disp-custom-limit">$5,000,000</span>
+              </div>
+              <input type="range" id="custom-policy-limit" class="cyber-slider" min="1000000" max="20000000" step="1000000" value="5000000">
+              <div class="slider-ticks">
+                <span>$1M</span>
+                <span>$5M</span>
+                <span>$10M</span>
+                <span>$20M</span>
+              </div>
+            </div>
+
+            <div class="form-group mb-5">
+              <div class="flex-between">
+                <label for="custom-deductible" class="form-label">Self-Insured Retention (Deductible)</label>
+                <span class="font-mono text-amber-400 font-bold" id="disp-custom-deductible">$25,000</span>
+              </div>
+              <input type="range" id="custom-deductible" class="cyber-slider" min="5000" max="100000" step="5000" value="25000">
+              <div class="slider-ticks">
+                <span>$5K</span>
+                <span>$25K</span>
+                <span>$50K</span>
+                <span>$100K</span>
+              </div>
+            </div>
+
+            <div class="premium-calc-summary">
+              <div class="flex-between items-baseline">
+                <span class="text-xs uppercase tracking-wider text-slate-400">Estimated Annual Premium:</span>
+                <span class="text-2xl font-mono font-bold text-cyan-400" id="disp-custom-premium">$54,600 / yr</span>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">Calculated via actuarial formula factoring your Risk Score (<span id="calc-risk-score-ref">58</span>) and industry base loss frequency.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mandatory Underwriting Conditions -->
+        <div class="cyber-card">
+          <div class="card-header">
+            <h3 class="card-title">Mandatory Underwriting Warranties</h3>
+            <span class="badge-blue">Binding Clauses</span>
+          </div>
+          <div class="card-body">
+            <p class="text-xs text-slate-400 mb-3">To maintain valid indemnity and prevent denial of claim in the event of an incident, the insured must warrant compliance with:</p>
+            <ul class="warranty-list" id="warranty-conditions-list">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span><strong>MFA Warranty:</strong> Multi-Factor Authentication must remain actively enforced on 100% of remote access VPNs, administrator accounts, and cloud email portals.</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span><strong>Immutable Backups:</strong> Offline or immutable object-locked (WORM) backups must be tested for restoration integrity at least quarterly.</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f2fe" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span><strong>Zero-Day Patching SLA:</strong> Known exploited vulnerabilities (KEV) with CVSS &ge; 9.0 must be patched or mitigated within 14 calendar days.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 8: AI RECOMMENDATIONS -->
+    <section id="step-8" class="phase-section">
+      <div class="section-header">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 8 of 9 &bull; Prescriptive Guidance</span>
+          <h1 class="section-title">AI Remediation Recommendations & Fix Engine</h1>
+          <p class="section-desc">Prioritized guidance mapped to <strong>Problem &rarr; Impact &rarr; Recommended Fix</strong>. Click "Simulate Fix" to observe live score improvements and premium credits.</p>
+        </div>
+        <div class="section-actions">
+          <button class="btn-cyan nav-to-step" data-target="9">
+            Generate Final Report &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Recommendation Cards List -->
+      <div class="recommendations-stack" id="recommendations-container">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </section>
+
+    <!-- STEP 9: FINAL REPORT -->
+    <section id="step-9" class="phase-section">
+      <div class="section-header no-print">
+        <div class="section-title-wrap">
+          <span class="section-tag">Step 9 of 9 &bull; Actuarial Deliverable</span>
+          <h1 class="section-title">Executive Cyber Risk & Underwriting Report</h1>
+          <p class="section-desc">Formal underwriting evaluation deliverable including risk score, financial quantification, policy terms, and improvement roadmap.</p>
+        </div>
+        <div class="section-actions">
+          <button id="btn-print-report" class="btn-cyan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+            Print / Save as PDF
+          </button>
+          <button id="btn-export-json" class="btn-ghost">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export JSON Data
+          </button>
+        </div>
+      </div>
+
+      <!-- Print/Report Container -->
+      <div class="printable-report-card" id="printable-report">
+        
+        <!-- Report Header -->
+        <div class="report-header-banner">
+          <div class="flex-between items-start">
+            <div>
+              <div class="report-badge-top">CONFIDENTIAL &bull; UNDERWRITING DELIVERABLE</div>
+              <h2 class="report-main-heading">Cyber Risk & Underwriting Assessment Report</h2>
+              <div class="report-meta-line" id="report-meta-org">
+                Prepared for: <strong class="text-white">Apex FinTech Solutions</strong> &bull; Assessment Date: <span id="report-date-str">September 29, 2026</span>
+              </div>
+            </div>
+            <div class="report-id-box font-mono">
+              <div class="text-xs text-slate-400">REPORT ID:</div>
+              <div class="text-cyan-400 font-bold" id="report-id-val">CIG-2026-9814-R3</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Report Executive Summary Section -->
+        <div class="report-section">
+          <h3 class="report-sec-heading">1. Executive Summary & Underwriting Determination</h3>
+          <div class="report-summary-box" id="report-exec-summary">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Report Risk & Metrics Overview -->
+        <div class="report-section">
+          <h3 class="report-sec-heading">2. Quantitative Risk Evaluation & Domain Scoring</h3>
+          <div class="report-grid-3">
+            <div class="report-stat-card">
+              <div class="stat-label">Overall Cyber Risk Score</div>
+              <div class="stat-value text-amber-400 font-mono" id="rep-risk-score">58 / 100</div>
+              <div class="stat-sub" id="rep-risk-tier">Moderate Risk Tier</div>
+            </div>
+            <div class="report-stat-card">
+              <div class="stat-label">Calculated Total Loss Exposure</div>
+              <div class="stat-value text-rose-400 font-mono" id="rep-loss-exposure">$8,450,000</div>
+              <div class="stat-sub">Based on 250k records & 48h outage</div>
+            </div>
+            <div class="report-stat-card">
+              <div class="stat-label">Recommended Policy Tier</div>
+              <div class="stat-value text-cyan-400 font-mono" id="rep-policy-tier">Standard Enterprise</div>
+              <div class="stat-sub" id="rep-premium-est">Est. Premium: $54,600 / yr</div>
+            </div>
+          </div>
+
+          <!-- Domain Bars in Report -->
+          <div class="mt-4">
+            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold mb-2">Category Security Maturity Breakdown:</div>
+            <div class="report-bars-grid" id="report-domain-bars">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Report Key Findings & Vulnerabilities -->
+        <div class="report-section">
+          <h3 class="report-sec-heading">3. Critical Vulnerabilities & Threat Vectors</h3>
+          <div class="table-responsive">
+            <table class="cyber-table">
+              <thead>
+                <tr>
+                  <th>Finding / CVE</th>
+                  <th>Affected Asset</th>
+                  <th>Severity & CVSS</th>
+                  <th>Status</th>
+                  <th>Remediation Requirement</th>
+                </tr>
+              </thead>
+              <tbody id="report-vuln-table-body">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Report Improvement Roadmap -->
+        <div class="report-section">
+          <h3 class="report-sec-heading">4. Cyber Resilience & Underwriting Roadmap</h3>
+          <div class="roadmap-grid" id="report-roadmap-container">
+            <!-- 3 Phases rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Legal Disclaimer Footer in Report -->
+        <div class="report-footer-disclaimer">
+          <strong>SIMULATED PROTOTYPE NOTICE:</strong> This assessment report is generated exclusively by the Cyber Insure Guard prototype demonstration engine for interactive architectural modeling purposes. Figures regarding financial loss exposure, cyber risk scores, premium rate calculations, and policy terms are simulated approximations and do not constitute a legally binding insurance underwriting contract or regulatory compliance certification.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Footer Bar -->
+  <footer class="cyber-footer no-print">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="status-indicator"></span>
+        <span class="text-xs text-slate-400">Cyber Insure Guard v2.4 &bull; Actuarial Engine Connected &bull; LocalStorage Synced</span>
+      </div>
+      <div class="footer-right">
+        <span class="text-xs text-slate-500">Simulated Underwriting Prototype &bull; Not Actual Financial Advice</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
